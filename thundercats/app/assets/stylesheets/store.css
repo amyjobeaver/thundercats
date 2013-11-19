@@ -1,0 +1,27 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+.product-bubble {
+	border: 1px solid gray;
+	padding: 1%;
+	display: inline-block;
+	width: 30%;
+	min-height:150px;
+}
+.product-bubble .description {
+	min-height: 40px;
+	background-color: beige;
+	padding: 4px;
+}
+.product-bubble .price {
+	background-color: black;
+	color: yellow;
+	font-size: 18px;
+	font-weight:bold;
+	text-align:center;
+}
+.product-bubble .more-info {
+	font-size: 10px;
+	font-style: italic;
+}
