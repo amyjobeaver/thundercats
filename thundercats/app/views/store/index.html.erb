@@ -1,23 +1,36 @@
-
-<h1>Welcome to ThunderCats</h1>
-<div>
-	<% @products.each do |product| %>
-		<div class="product-bubble">
-			<h3><%= product.name %></h3>
-			<div class="description">
-					<%= product.description %>
-				</div>
-			<div class="price">
-				<%= number_to_currency product.unit_price %>
-			</div>
-			<div class="more-info">
-				SKU: <%= product.sku %><br/>
-				Brand: <%= product.brand %></br>
-			</div>
-			<div>
-				Quantity:
-				<input type="text" class="quantity" value="1" />
-				<button class="add-to-cart-button">Add to Cart</button>
-			</div>
+<div style="position:relative">
+	<div style="position:absolute;width:200px;right:10px;background-color:beige;padding:4px;border:2px solid red">
+		<h4>Your Cart</h4>
+		<div id="cart_msg">
+			<% if @cart.count <= 0 %>
+			You have nothing in your cart.
+			<% else %>
+			You have <%= pluralize(@cart.count, "item") %> in your cart.
+			<% end %>
 		</div>
-		<% end %>
+	</div>
+
+	<h1>Welcome to ThunderCats</h1>
+	<div>
+		<% @products.each do |product| %>
+			<div class="product-bubble">
+				<h3><%= product.name %></h3>
+				<div class="description">
+						<%= product.description %>
+					</div>
+				<div class="price">
+					<%= number_to_currency product.unit_price %>
+				</div>
+				<div class="more-info">
+					SKU: <%= product.sku %><br/>
+					Brand: <%= product.brand %></br>
+				</div>
+				<div>
+					Quantity:
+					<input type="hidden" class="product-id" value="<%= product.id %>" />
+					<input type="text" class="quantity" value="1" />
+					<button class="add-to-cart-button">Add to Cart</button>
+				</div>
+			</div>
+			<% end %>
+	</div>

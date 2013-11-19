@@ -10,10 +10,17 @@ $(document).ready(function () {
 
 		var value_int = parseInt(value);
 
+		var product_id = $(this).siblings('.product-id').val();
+
+
+
+		//Do something here
+
 		if (value_int > 0) {
 			//Make an AJAX call
 			$.post('/store/add_cart', {
-				quantity : value_int
+				quantity : value_int,
+				product_id : product_id
 			})
 		}
 		else {alert (value + ' is not a number.');
