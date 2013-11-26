@@ -1,6 +1,8 @@
 Thundercats::Application.routes.draw do
+  get "orders/index"
   get "store/index"
   post "store/add_cart"
+  get "products-by-category/:category_name" => "store#index", as: :products_by_category
 
   devise_for :users
   resources :customers

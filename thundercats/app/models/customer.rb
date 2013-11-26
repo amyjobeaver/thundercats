@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
 
-	has_many :orders
+	has_one :order
 
 	validates_presence_of :name, :phone, :address1, :city, :zip 
   validates_presence_of :state, length: { is: 2 }

@@ -1,12 +1,8 @@
 <div style="position:relative">
-	<div style="position:absolute;width:200px;right:10px;background-color:beige;padding:4px;border:2px solid red">
+	<div class="cart">
 		<h4>Your Cart</h4>
 		<div id="cart_msg">
-			<% if @cart.count <= 0 %>
-			You have nothing in your cart.
-			<% else %>
-			You have <%= pluralize(@cart.count, "item") %> in your cart.
-			<% end %>
+			<%= render "cart" %>
 		</div>
 	</div>
 
@@ -29,7 +25,12 @@
 					Quantity:
 					<input type="hidden" class="product-id" value="<%= product.id %>" />
 					<input type="text" class="quantity" value="1" />
-					<button class="add-to-cart-button">Add to Cart</button>
+					<button class="add-to-cart-button"
+						data-product-id="<%= product.id %>"
+						data-product-name="<%= product.name %>"
+						data-price="<%= product.unit_price %>">
+						Add to Cart
+					</button>
 				</div>
 			</div>
 			<% end %>

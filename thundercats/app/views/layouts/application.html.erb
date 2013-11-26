@@ -2,20 +2,31 @@
 <html>
 <head>
   <title>Thundercats</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  
+ <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<div class="header" style="font-size:20px">
-		ThunderCats
-		<div style="float:right; color:red">
+	<div class="header" style="font-size:20px; text-decoration:none">
+		<%= link_to "ThunderCats", root_path %>
+		<%= link_to "All", root_path %>
+		<% Category.order('name asc').each do |category| %>
+			<%= link_to category.name, products_by_category_path(category.name) %>
+
+		<% end %>
+		<div style="float:right; color:red; font-size:12px; text-decoration:none">
 		<% if user_signed_in? %>
 			You're logged in as <%= current_user.email %>. Not you?
 			<%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+			<%= link_to "Products", products_path %>
+			<%= link_to "Orders", orders_index_path %>
+
 		<% end %>
 		</div>
 	</div>
+	<hr>
 
 
 <div>
